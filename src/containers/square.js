@@ -26,9 +26,18 @@ class Square extends Component {
   }
 }
 
-function mapStateToProps({ squares, stepNumber, isXNext, winner }) {
+function mapStateToProps(state) {
   // SquareReducer: {squares: Array(9), stepNumber: 0, isXNext: true}__proto__: Object
-  return { squares, stepNumber, isXNext, winner };
+  //console.log('map State',state);
+  const current = state.history[state.stepNumber];
+  //console.log('current state',current);
+
+  return {
+    squares: current.squares,
+    stepNumber: state.stepNumber,
+    isXNext: state.isXNext,
+    winner: state.winner
+  };
 }
 
 function mapDispatchToProps(dispatch) {
